@@ -5,11 +5,41 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: 当前文件",
+            "name": "Python: current file",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+            
         }
+
+        // {
+        //     "name": "template",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "args": ["1","2"],
+        //     "program": "${workspaceFolder}",
+        //     "console": "integratedTerminal"
+        // },
+        //the template for debugging multiple files
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Server",
+        //     "program": "${workspaceFolder}/server.js"
+        //   },
+        //   {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Client",
+        //     "program": "${workspaceFolder}/client.js"
+        //   }
+        // ],
+        // "compounds": [
+        //   {
+        //     "name": "Server/Client",
+        //     "configurations": ["Server", "Client"],
+        //     "preLaunchTask": "${defaultBuildTask}"
+        //   }
     ]
 }

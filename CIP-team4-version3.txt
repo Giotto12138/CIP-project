@@ -1,0 +1,56 @@
+The protocol:
+
+1. There are two teams, blue team(our team), red team(the adversary). Both two teams have their space, 
+    and there is a grey space(space between our space and an adversarial’ s space).
+
+    1.1 In our system, there is no red space and blue space, and we focus on grey space. 
+
+    1.2 In grey space, there are many devices(VM), some of devices belong to , some belong to the adversary.
+    
+    1.3 Our team hackes one of adversary's devices in grey space. (If we have large-scaled environment, we should invade several devices)
+
+    1.4 The adversary uses IDS, like SNORT to detect if we are intrude their devices in grey sapce.
+
+
+2. We use the randomized search foraging behavior exhibited by browsing ants.
+
+    2.1 We generate ants to scout out grey space to detect adversarial devices, and scan ports on one of them. 
+    At the meanwhile, we evade the SNORT used by the adversary.
+
+    2.2 The ants scan surrounding devices and get ip addresses of these devices(if hard, 
+        maybe just assume we already know the ip addresses of these devices)
+
+    2.3 When the ant get the ip address of a device, it scans the ports of this ip address like nmap. 
+        But, we will change the speed of scanning, especially slow down the speed, so that our scanning 
+        would not be detected by SNORT.
+
+    2.4 When the ant reaches a device, it will have a record <pheromone(int), boolean value(boolean), 
+        other information(struct)>, and sends this record to our centeral VM.
+
+        2.4.1 When the ant reaches a device, it adds the pheromone value by 10. 
+        The pheromone will evaperate over time to avoid unlimited accumulation of trails over some component. 
+        The minimum value of pheromone is 0.
+        
+        2.4.2 If the ant finds this is a adversary's device, it will set boolean value to T, 
+            and increases the pheromone by 10. Otherwise, it will set bollean value to F.
+
+        2.4.3 The ant will record some information as a struct, such as the time stamp, the ip address of 
+            the device, the type of intrusion, the operating system of the device.
+
+        2.4.4 When the centeral VM get message from ant, it will store this message to its database.
+
+    2.5 The ant scans surrounding devices over a period of time, and gets the pheromone of these devices from central machine, 
+        it makes a calculation: it firstly adds all the pheromones from scanned devices by 1(in case of 0 pheromone), 
+        then calculate the sum of the pheromones. Finally, it chooses a device to detect according to the proportion 
+        of pheromone concentration of these devices. 
+
+        2.5.1 For example: if an ant scans three devices A,B,C, A has 0 pheromone, B has 20 pheromones, 
+            C has 9 pheromone. The ant makes a calculation: 0+1=1, 20+1 =21, 9+1 =10. 1+21+10=32. 
+            So, it has 1/32 percent chance of detecting A. It has 21/32 percent chance of detecting B. 
+            It has 10/32 percent chance of detecting C.
+
+
+3. After a certain time, we can get a path according to pheromone concentration. We can profile a mappig of grey space. 
+Proﬁling the grey space between a blue (Home) and red network (adversary) can be useful 
+in determining if an adversary is encroaching on the grey space towards the blue network.
+
