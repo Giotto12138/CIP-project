@@ -84,7 +84,8 @@ async def handle_ants(reader, writer):
     writer.close()
 
 loop = asyncio.get_event_loop()
-coro = asyncio.start_server(handle_ants, '192.168.58.129', PORT, loop=loop)
+#coro = asyncio.start_server(handle_ants, '192.168.58.129', PORT, loop=loop)
+coro = asyncio.start_server(handle_ants, "127.0.0.1", PORT, loop=loop)
 server = loop.run_until_complete(coro)
 
 # Serve requests until Ctrl+C is pressed

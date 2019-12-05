@@ -37,6 +37,8 @@ result = result+1
 if result:
     connect_suc = "True"
     
+    sock.close()
+    
 print("whether it can access to the ip:  ",connect_suc,"\nOpened ports:",opened_ports)
 
 # for i in opened_ports:

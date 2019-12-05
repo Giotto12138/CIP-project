@@ -58,7 +58,8 @@ def test_fp(host, port1, port2):
 
 async def tcp_echo_client(message, loop):
 
-    reader, writer = await asyncio.open_connection('192.168.58.129', PORT, loop=loop)
+    #reader, writer = await asyncio.open_connection('192.168.58.129', PORT, loop=loop)
+    reader, writer = await asyncio.open_connection("127.0.0.1", PORT, loop=loop)
     # while serverResStop <= 5:
     #    nmapResult = test_fp(HOST, PORT, 80)
     #    nmapResult = str(nmapResult)
