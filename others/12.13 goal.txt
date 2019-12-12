@@ -1,0 +1,7 @@
+Group #4
+
+·   Run experiments for 20VMs using the grid format that you illustrated in presentation
+
+·   Create video that shows progression of the ants around grid scanning for open ports for 20 VMs
+
+·  Produce log that document progression of ants and SNORT logs that reveal that it can not detect scanning
