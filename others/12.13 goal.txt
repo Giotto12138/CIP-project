@@ -5,3 +5,6 @@ Group #4
 ·   Create video that shows progression of the ants around grid scanning for open ports for 20 VMs
 
 ·  Produce log that document progression of ants and SNORT logs that reveal that it can not detect scanning
+
+12.14 先搞明白kevin他们的代码，看看scapy库
+        确认好端口扫描和snort捕捉扫描的原理，写更详细的端口扫描和snort文档，并且演示给他们看
